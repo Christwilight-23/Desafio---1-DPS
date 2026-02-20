@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import ContactList from "./assets/components/ContactList";
+import AddContact from "./assets/components/AddContact";
+import data from "./data/contacts.json";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [contacts, setContacts] = useState(data);
+
+  const addContact = (contact) => {
+    setContacts([
+      ...contacts,
+      { ...contact, id: Date.now(), favorito: false }
+    ]);
+  };
+
+  const deleteContact = (id) => {
+    setContacts(contacts.filter(c => c.id !== id));
+  };
+
+  const toggleFavorite = (id) => {
+    setContacts(
+      contacts.map(c =>
+        c.id === id ? { ...c, favorito: !c.favorito } : c
+      )
+    );
+  };
+
+  const sortedContacts = [...contacts].sort(
+    (a, b) => b.favorito - a.favorito
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ padding: 20 }}>
+      <h1>Lista de Contactos</h1>
+      <AddContact onAdd={addContact} />
+      <ContactList
+        contacts={sortedContacts}
+        onDelete={deleteContact}
+        onToggleFavorite={toggleFavorite}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;

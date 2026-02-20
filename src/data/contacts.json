@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "telefono": "7777-1111",
+    "favorito": true
+  },
+  {
+    "id": 2,
+    "nombre": "María",
+    "apellido": "López",
+    "telefono": "7777-2222",
+    "favorito": false
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos",
+    "apellido": "Gómez",
+    "telefono": "7777-3333",
+    "favorito": false
+  }
+]
