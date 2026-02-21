@@ -2,6 +2,7 @@ import { useState } from "react";
 import ContactList from "./assets/components/ContactList";
 import AddContact from "./assets/components/AddContact";
 import data from "./data/contacts.json";
+import "./App.css"
 
 function App() {
   const [contacts, setContacts] = useState(data);
