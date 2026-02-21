@@ -1,17 +1,31 @@
-function Contact({contact,onDelete,onToggleFavorite}){
-    return(
-        <div>
-            <h2>
-                {contact.nombre}{contact.apellido}
-                {contact.favorito && "*"}
-            </h2>
-            <p>{contact.telefono}</p>
+function Contact({ contact, onDelete, onToggleFavorite }) {
+  return (
+    <div className={`contact-card ${contact.favorito ? "favorito" : ""}`}>
+      
+      <h3>
+        {contact.nombre} {contact.apellido} {contact.favorito && "⭐"}
+      </h3>
 
-            <button onClick={() => onToggleFavorite(contact.id)}>Favorito</button>
+      <p>Tel: {contact.telefono}</p>
 
-            <button onClick={() => onDelete(contact.id)}>Elimminar</button>
-        </div>
-    )
+      <div className="contact-actions">
+        <button
+          className="btn-fav"
+          onClick={() => onToggleFavorite(contact.id)}
+        >
+          Favorito
+        </button>
+
+        <button
+          className="btn-delete"
+          onClick={() => onDelete(contact.id)}
+        >
+          Eliminar
+        </button>
+      </div>
+
+    </div>
+  );
 }
 
 export default Contact;

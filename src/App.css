@@ -1,42 +1,172 @@
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #0f172a; /* fondo oscuro */
+  color: #e5e7eb; /* texto claro */
+}
+
+/* CONTENEDOR PRINCIPAL */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* HEADER */
+h1 {
   text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #f1f5f9;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* FORMULARIO */
+form {
+  background: #111827; /* oscuro */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* INPUTS (CLAROS) */
+form input {
+  flex: 1 1 200px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  background-color: #ffffff; /* 👈 claros */
+  color: #111827;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+form input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+}
+
+/* BOTÓN PRINCIPAL */
+form button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+form button:hover {
+  background-color: #2563eb;
+}
+
+/* LISTA */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* TARJETAS DE CONTACTO */
+.contact-card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  transition: all 0.2s ease;
+}
+
+.contact-card:hover {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+/* FAVORITO */
+.contact-card.favorito {
+  border-left: 5px solid #facc15;
+  background: #1a1a0a;
+}
+
+/* INFO */
+.contact-card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.contact-card p {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* CONTENEDOR BOTONES */
+.contact-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* BOTONES */
+.contact-card button {
+  border: none;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.contact-card button:hover {
+  opacity: 0.85;
+}
+
+.btn-fav {
+  background-color: #facc15;
+  color: #111827;
+}
+
+.btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+
+  form {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .contact-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .contact-actions {
+    width: 100%;
+    justify-content: flex-end;
   }
-}
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
